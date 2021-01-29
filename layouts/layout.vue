@@ -223,7 +223,7 @@ export default {
         Host: "smtp.elasticemail.com",
         Username: "dmitrit.learn@gmail.com",
         Password: "56B2D6C56694C8BC367A7DBB971A6923F3BB",
-        To: "dmitrit.dev@gmail.com",
+        To: "Kirill_Duboiskiy@mail.ru",
         From: "dmitrit.learn@gmail.com",
         Subject: "Новый запрос",
         Body: str,
