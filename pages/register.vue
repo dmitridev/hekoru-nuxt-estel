@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div data-app>
     <Notification v-if="success" type="success" :message="success" />
     <Notification v-if="error" type="danger" :message="error" />
     <v-card class="mx-auto">
-      <v-card-title>Регистрация</v-card-title>
+      <v-card-title>Регистрация<v-spacer/><v-btn icon to="/"><v-icon>mdi-close</v-icon></v-btn></v-card-title>
       <v-card-text>
         <form v-if="!success" method="post" @submit.prevent="register">
           <v-text-field
@@ -83,7 +83,7 @@ export default {
       try {
         this.$axios.setToken(false);
         let obj = {
-          user: this.username,
+          username: this.username,
           email: this.email,
           password: this.password,
           phone: this.phone,
@@ -96,8 +96,10 @@ export default {
         }
 
         await this.$axios.post("auth/local/register", obj);
-        this.success = `A confirmation link has been sent to your email account. \
- Please click on the link to complete the registration process.`;
+        this.success="Успешно";
+        this.$router.back();
+        //this.success = `A confirmation link has been sent to your email account. \
+ //Please click on the link to complete the registration process.`;
       } catch (e) {
         this.error = e.message;
       }

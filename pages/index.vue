@@ -1,5 +1,6 @@
 <template>
-                    <v-layout>
+<div>
+                    <v-layout >
                         <v-card class="ma-2" width="256">
                             <v-navigation-drawer permanent>
                                 <v-list-item>
@@ -63,6 +64,7 @@
                             </v-card-text>
                         </v-card>
                     </v-layout>
+                    </div>
 </template>
 
 <script>

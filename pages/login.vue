@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <v-card>
-        <v-card-title>Войти</v-card-title>
+        <v-card-title>Войти<v-spacer/><v-btn icon to="/"><v-icon>mdi-close</v-icon></v-btn></v-card-title>
         <v-card-text>
           <Notification v-if="error" type="danger" :message="error" />
 

@@ -38,7 +38,9 @@
               <v-card-text>
                 <v-img :src="item.picture[0].url"></v-img>
               </v-card-text>
-              <v-card-actions class="justify-end">Цена:{{item.price}}руб</v-card-actions>
+              <v-card-actions class="justify-end"
+                >Цена:{{ item.price }}руб</v-card-actions
+              >
             </v-card>
           </template>
           <v-card>
@@ -118,10 +120,7 @@ export default {
   },
   methods: {
     inBasket(item, counter) {
-      const basketItems = JSON.parse(localStorage.getItem("items")) || [];
-
-      basketItems.push({ item: item, counter: counter });
-      localStorage.items = JSON.stringify(basketItems);
+      this.$store.commit("addToBasket", { item: item, counter: counter });
     },
   },
 };

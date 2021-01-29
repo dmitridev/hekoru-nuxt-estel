@@ -26,7 +26,7 @@
             <template v-if="$store.getters['isAuthenticated']">
               <v-btn to="/profile" class="flex xs2">Кабинет</v-btn>
             </template>
-            <v-dialog width="800" fullscreen>
+            <v-dialog width="800" fullscreen v-model="basket_dialog">
               <template v-slot:activator="{ on }">
                 <v-btn
                   v-on="on"
@@ -43,7 +43,7 @@
                 </v-btn>
               </template>
               <v-card>
-                <v-card-title> Корзина </v-card-title>
+                <v-card-title> Корзина <v-spacer></v-spacer><v-btn icon @click="basket()"><v-icon>mdi-close</v-icon></v-btn></v-card-title>
                 <v-card-text>
                   <h1>Общая сумма заказа: {{ sum }}</h1>
                   <v-card v-for="({ item }, i) in items" :key="i">
@@ -137,7 +137,7 @@
                           v-model="post_cash_or_card"
                         ></v-select>
                         <v-card-actions class="justify-end">
-                        <v-btn  type="submit" color="error">Отправить</v-btn>
+                        <v-btn type="submit" color="error">Отправить</v-btn>
                         </v-card-actions>
                       </v-form>
                     </div>
@@ -154,11 +154,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   computed: {
     ...mapGetters(["isAuthenticated", "loggedInUser", "isSpecialUser"]),
+    ...mapMutations(["addToBasket","removeFromBasket","clearBasket"]),
   },
   data: () => ({
     login_dialog: false,
@@ -203,7 +204,7 @@ export default {
   },
   async created() {
     if (process.browser) {
-      const items = JSON.parse(localStorage.getItem("items")) || [];
+      const items = this.$store.getters["basket"];
       this.items = items;
       console.log(this.items);
     }
@@ -213,19 +214,12 @@ export default {
       console.log('local storage:',v);
     }
   },
-
-  computed:{
-      basketItems(){
-        return localStorage.getItem("items");
-      }
-  },
   methods: {
     basket() {
-      basket_dialog = true;
+      this.basket_dialog = !this.basket_dialog;
     },
     itemDelete(item, i) {
-      this.items = this.items.filter((value, index) => index != i);
-      localStorage.setItem("items", JSON.stringify(this.items));
+      this.$store.commit('removeFromBasket',item);
     },
     async login() {
       this.error = null;
