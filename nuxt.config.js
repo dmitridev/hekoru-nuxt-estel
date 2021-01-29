@@ -3,6 +3,9 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: '',
+  env:{
+    baseUrl: process.env.BASE_URL || 'https://estel-mag.herokuapp.com/'
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -48,14 +51,14 @@ export default {
 
   },
   strapi: {
-    url: BASE_URL
+    url: process.env.baseUrl
   },
 
   proxy: {
-    '/*': BASE_URL,
-    '/uploads': BASE_URL,
-    '/auth/': BASE_URL,
-    '/users/': BASE_URL
+    '/*': process.env.baseUrl,
+    '/uploads': process.env.baseUrl,
+    '/auth/': process.env.baseUrl,
+    '/users/': process.env.baseUrl
   },
 
 
