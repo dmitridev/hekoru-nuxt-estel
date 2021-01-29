@@ -41,7 +41,7 @@
               <v-card-text>
                 <v-img :src="item.picture[0].url"></v-img>
               </v-card-text>
-              <v-card-actions class="justify-end">Цена:{{item.price}}руб</v-card-actions>/v-card-actions>
+              <v-card-actions class="justify-end">Цена:{{item.price}}руб</v-card-actions>
             </v-card>
           </template>
           <v-card>
