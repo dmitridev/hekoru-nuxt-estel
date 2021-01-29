@@ -48,14 +48,14 @@ export default {
 
   },
   strapi: {
-    url: process.env.BASE_URL
+    url: BASE_URL
   },
 
   proxy: {
-    '/*': process.env.BASE_URL,
-    '/uploads': process.env.BASE_URL,
-    '/auth/': process.env.BASE_URL,
-    '/users/': process.env.BASE_URL
+    '/*': BASE_URL,
+    '/uploads': BASE_URL,
+    '/auth/': BASE_URL,
+    '/users/': BASE_URL
   },
 
 
