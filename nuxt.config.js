@@ -2,12 +2,12 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: '',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - frontend',
-    title: 'frontend',
+    title: 'Магазин',
     htmlAttrs: {
       lang: 'en'
     },
@@ -17,7 +17,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+
     ]
   },
 
