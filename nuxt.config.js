@@ -4,7 +4,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target:'server',
   env:{
-    baseUrl: process.env.BASE_URL || 'https://estel-mag.herokuapp.com/'
+    baseUrl: process.env.BASE_URL || 'http://localhost:1337'
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -52,10 +52,10 @@ export default {
   },
 
   proxy: {
-    '/*': 'https://estel-mag.herokuapp.com/',
-    '/uploads': 'https://estel-mag.herokuapp.com/',
-    '/auth/': 'https://estel-mag.herokuapp.com/',
-    '/users/': 'https://estel-mag.herokuapp.com/'
+    '/*': process.env.baseUrl,
+    '/uploads': process.env.baseUrl,
+    '/auth/': process.env.baseUrl,
+    '/users/': process.env.baseUrl
   },
 
 
