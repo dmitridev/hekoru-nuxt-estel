@@ -8,6 +8,8 @@ export const getters = {
   },
 
   isSpecialUser(state){
-    return state.auth.user.special_user;
+    if(state.auth.user)
+      return state.auth.user.special_user;
+    else return false;
   }
 }
