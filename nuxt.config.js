@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+
   env:{
     baseUrl: process.env.BASE_URL || 'https://estel-mag.herokuapp.com/'
   },
