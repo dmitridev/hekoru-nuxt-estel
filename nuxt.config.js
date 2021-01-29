@@ -50,9 +50,6 @@ export default {
     proxy: true,
 
   },
-  strapi: {
-    url: process.env.baseUrl
-  },
 
   proxy: {
     '/*': 'https://estel-mag.herokuapp.com/',
