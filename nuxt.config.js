@@ -55,10 +55,10 @@ export default {
   },
 
   proxy: {
-    '/*': process.env.baseUrl,
-    '/uploads': process.env.baseUrl,
-    '/auth/': process.env.baseUrl,
-    '/users/': process.env.baseUrl
+    '/*': 'https://estel-mag.herokuapp.com/',
+    '/uploads': 'https://estel-mag.herokuapp.com/',
+    '/auth/': 'https://estel-mag.herokuapp.com/',
+    '/users/': 'https://estel-mag.herokuapp.com/'
   },
 
 
