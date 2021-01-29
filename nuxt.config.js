@@ -52,10 +52,10 @@ export default {
   },
 
   proxy: {
-    '/*': 'http://localhost:1337',
-    '/uploads': 'http://localhost:1337',
-    '/auth/': 'http://localhost:1337',
-    '/users/': 'http://localhost:1337'
+    '/*': 'http://151.248.125.28:1337/',
+    '/uploads': 'http://151.248.125.28:1337/',
+    '/auth/': 'http://151.248.125.28:1337/',
+    '/users/': 'http://151.248.125.28:1337/'
   },
 
 
