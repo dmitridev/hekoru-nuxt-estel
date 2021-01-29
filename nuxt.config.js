@@ -52,10 +52,10 @@ export default {
   },
 
   proxy: {
-    '/*': process.env.baseUrl,
-    '/uploads': process.env.baseUrl,
-    '/auth/': process.env.baseUrl,
-    '/users/': process.env.baseUrl
+    '/*': 'http://151.248.125.28:1337/',
+    '/uploads': 'http://151.248.125.28:1337/',
+    '/auth/': 'http://151.248.125.28:1337/',
+    '/users/': 'http://151.248.125.28:1337/'
   },
 
 
