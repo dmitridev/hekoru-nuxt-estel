@@ -48,7 +48,7 @@ export default {
 
   },
   strapi: {
-    url: process.env.BASE_URL
+    url: env("BASE_URL")
   },
 
   proxy: {
