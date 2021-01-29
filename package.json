@@ -16,6 +16,7 @@
     "core-js": "^3.8.2",
     "nuxt": "^2.14.12",
     "strapi-provider-email-console": "0.0.1",
+    "vuetify": "^2.4.3",
     "vuex": "^3.6.0"
   },
   "devDependencies": {
