@@ -12,10 +12,7 @@
           <v-list-item
             v-for="item in categories"
             :key="item.title"
-            :to="{
-              path: '/category/',
-              query: { category_id: item.category_id },
-            }"
+            :to="`category/${item.category_id}`"
           >
             <v-list-item-icon>
               <v-icon>mdi-ticket</v-icon>
@@ -99,7 +96,6 @@
 </template>
 
 <script>
-import price from "../components/price.vue";
 export default {
   layout: "layout",
   data: () => ({
@@ -108,7 +104,7 @@ export default {
     item_dialog: [],
   }),
   async created() {
-    const category_id = this.$route.query.category_id;
+    const category_id = this.$route.params.category_id;
     const { data } = await this.$axios.get(
       `/items/?category_id=${category_id}`
     );
@@ -117,16 +113,13 @@ export default {
 
     this.categories = categories.data;
 
-    var item = this.$store.getters["isSpecialUser"];
-    console.log(item);
-    console.log(data);
     this.items = data;
     this.item_dialog.fill(false, 0, this.items.length);
   },
   methods: {
     inBasket(item, counter) {
       const basketItems = JSON.parse(localStorage.getItem("items")) || [];
-      console.log(basketItems);
+
       basketItems.push({ item: item, counter: counter });
       localStorage.items = JSON.stringify(basketItems);
     },

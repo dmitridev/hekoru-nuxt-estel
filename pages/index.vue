@@ -13,7 +13,7 @@
                                 <v-divider></v-divider>
                                 <v-list dense nav>
 
-                                    <v-list-item v-for="item in items" :key="item.title" :to="{path: '/category/',query:{category_id: item.category_id}}">
+                                    <v-list-item v-for="item in items" :key="item.title" :to="`category/${item.category_id}`">
                                         <v-menu v-model="menu[item.id]" nudge-top="40" offset-x open-on-hover>
                                           <template v-slot:activator="{on,attrs}">
                                         <v-list-item-icon>
@@ -25,7 +25,7 @@
                                           <v-card-title>{{item.name}}</v-card-title>
                                         <v-card-text>
                                           <v-flex row class="mx-auto">
-                                          <v-card class="ma-2" v-for="(cat,i) in subcategories[item.category_id]" :key="i" width="120" :to="{name: 'item', query: {category_id:cat.category_id}}">
+                                          <v-card class="ma-2" v-for="(cat,i) in subcategories[item.category_id]" :key="i" width="120" :to="`category/${item.category_id}`">
                                             <v-card-title style="font-size:10px">{{cat.name}}</v-card-title>
                                                   <v-card-text class="align-center">
                                                     <v-img width="100px" :src="cat.picture[0].url"></v-img>

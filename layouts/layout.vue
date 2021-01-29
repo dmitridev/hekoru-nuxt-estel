@@ -63,51 +63,68 @@
                 </v-card-text>
                 <v-container>
                   <template v-if="items.length !== 0">
-                    <v-btn @click="() => (request = true)"
+                    <v-btn class=" flex xs12" @click="() => (request = !request)"
                       >Оформить заявку</v-btn
                     >
-                    <div v-if="request">
+                    <div v-if="request" class="pa-2">
                       <v-form method="post" @submit.prevent="send_request">
+                        <v-layout>
                         <v-text-field
+                          class="flex xs6 mr-2"
                           name="post_name"
                           label="Имя"
                           v-model="post_name"
                         ></v-text-field>
                         <v-text-field
+                          class="flex xs6"
                           name="post_email"
                           label="Электронная почта"
                           v-model="post_email"
                         ></v-text-field>
+                        </v-layout>
+                        <v-layout>
                         <v-text-field
+                          class="flex xs6 mr-2"
                           name="post_phone"
                           label="Телефон"
                           v-model="post_phone"
                         ></v-text-field>
                         <v-text-field
+                          class="flex xs6"
                           name="post_city"
                           label="Город доставки"
                           v-model="post_city"
                         ></v-text-field>
+                        </v-layout>
+                        <v-layout>
                         <v-text-field
+                          class="flex xs6 mr-2"
                           name="post_street"
                           label="Улица"
                           v-model="post_street"
                         ></v-text-field>
                         <v-text-field
+                          class="flex xs6"
                           name="post_house"
                           label="Номер дома"
                           v-model="post_house"
                         ></v-text-field>
+                        </v-layout>
+                        <v-layout>
                         <v-text-field
+                        class="flex xs12"
                           name="post_home_number"
                           label="Адрес дома"
                           v-model="post_home_number"
                         ></v-text-field>
+                        </v-layout>
+                        <v-layout>
                         <v-text-field
                           name="post_address"
                           label="Адрес"
                           v-model="post_address"
                         ></v-text-field>
+                        </v-layout>
                         <v-text-field
                           name="post_comments"
                           label="Комментарий к заказу"
@@ -119,7 +136,9 @@
                           :items="['Картой', 'Наличными']"
                           v-model="post_cash_or_card"
                         ></v-select>
-                        <v-btn type="submit">Отправить</v-btn>
+                        <v-card-actions class="justify-end">
+                        <v-btn  type="submit" color="error">Отправить</v-btn>
+                        </v-card-actions>
                       </v-form>
                     </div>
                   </template>
@@ -168,15 +187,18 @@ export default {
     let script = document.createElement("script");
     script.setAttribute("src", "https://smtpjs.com/v3/smtp.js");
     document.head.appendChild(script);
+    window.addEventListener('localStorage-changed',(event)=>{
+        this.items = JSON.parse(localStorage.getItem("items")) || [];
+    });
   },
   computed: {
     sum({ items }) {
       return (
         items &&
         items.reduce((accumulator, element) => {
-          return accumulator + element.item.price * element.counter;
+          return accumulator + (element.item.price?element.item.price:0 * element.counter);
         }, 0)
-      );
+      ) || 0;
     },
   },
   async created() {
@@ -185,6 +207,17 @@ export default {
       this.items = items;
       console.log(this.items);
     }
+  },
+  watch:{
+    'localStorage.items'(v){
+      console.log('local storage:',v);
+    }
+  },
+
+  computed:{
+      basketItems(){
+        return localStorage.getItem("items");
+      }
   },
   methods: {
     basket() {
@@ -208,6 +241,7 @@ export default {
         this.error = e.response.data.message[0].messages[0].message;
       }
     },
+
     async send_request() {
       var str = "Заказ:";
       for (var it of this.items) {

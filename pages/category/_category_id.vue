@@ -6,8 +6,7 @@
           <v-card
             width="300px"
             :class="{ 'on-hover': hover }"
-            :to="{ path: '/item/', query: { category_id: item.category_id } }"
-          >
+            :to="`/item/${item.category_id}`"          >
             <v-card-title>
               {{ item.name }}
             </v-card-title>
@@ -30,7 +29,7 @@ export default {
     category_id: 0,
   }),
   async created() {
-    this.category_id = this.$route.query.category_id;
+    this.category_id = this.$route.params.category_id;
     const { data } = await this.$axios.get(
       `/subcategories/?category_id=${this.category_id}`
     );

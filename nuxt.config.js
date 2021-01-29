@@ -2,9 +2,16 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target:'server',
-  env:{
+  target: 'server',
+  env: {
     baseUrl: process.env.BASE_URL || 'http://151.248.125.28:1337/'
+  },
+  router:{
+    routes:[
+      {
+
+      }
+    ]
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
