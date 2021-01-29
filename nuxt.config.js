@@ -44,18 +44,18 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios', '@nuxtjs/strapi', '@nuxtjs/auth'],
   axios: {
-    proxy:true,
+    proxy: true,
 
   },
   strapi: {
-      url: 'http://localhost:1337'
+    url: process.env.BASE_URL
   },
 
   proxy: {
-    '/*':'http://localhost:1337/',
-    '/uploads': 'http://localhost:1337/',
-    '/auth/': 'http://localhost:1337/',
-    '/users/':'http://localhost:1337/'
+    '/*': process.env.BASE_URL,
+    '/uploads': process.env.BASE_URL,
+    '/auth/': process.env.BASE_URL,
+    '/users/': process.env.BASE_URL
   },
 
 
