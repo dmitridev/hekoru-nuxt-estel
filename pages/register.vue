@@ -97,7 +97,6 @@ export default {
 
         await this.$axios.post("auth/local/register", obj);
         this.success="Успешно";
-        this.$router.back();
         //this.success = `A confirmation link has been sent to your email account. \
  //Please click on the link to complete the registration process.`;
       } catch (e) {

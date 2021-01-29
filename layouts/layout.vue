@@ -37,13 +37,13 @@
                   <v-badge
                     :content="items.length"
                     color="primary"
-                    @click="basket()"
+                    @click="basket(true)"
                     >Корзина</v-badge
                   >
                 </v-btn>
               </template>
               <v-card>
-                <v-card-title> Корзина <v-spacer></v-spacer><v-btn icon @click="basket()"><v-icon>mdi-close</v-icon></v-btn></v-card-title>
+                <v-card-title> Корзина <v-spacer></v-spacer><v-btn icon @click="basket(false)"><v-icon>mdi-close</v-icon></v-btn></v-card-title>
                 <v-card-text>
                   <h1>Общая сумма заказа: {{ sum }}</h1>
                   <v-card v-for="({ item }, i) in items" :key="i">
@@ -164,7 +164,7 @@ export default {
   data: () => ({
     login_dialog: false,
     user_dialog: false,
-    basket_dialog: true,
+    basket_dialog: false,
     items: [],
     user_type: "usual",
     email: "",
@@ -215,8 +215,8 @@ export default {
     }
   },
   methods: {
-    basket() {
-      this.basket_dialog = !this.basket_dialog;
+    basket(v) {
+      this.basket_dialog =v;
     },
     itemDelete(item, i) {
       this.$store.commit('removeFromBasket',item);
