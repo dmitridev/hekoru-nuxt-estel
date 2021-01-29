@@ -52,10 +52,10 @@ export default {
   },
 
   proxy: {
-    '/*': process.env.BASE_URL,
-    '/uploads': process.env.BASE_URL,
-    '/auth/': process.env.BASE_URL,
-    '/users/': process.env.BASE_URL
+    '/*': env('BASE_URL'),
+    '/uploads': env('BASE_URL'),
+    '/auth/': env('BASE_URL'),
+    '/users/': env('BASE_URL')
   },
 
 
