@@ -51,7 +51,6 @@
                     <v-card-text>
                       <v-layout class="space-between align-center">
                         <img width="70" :src="item.picture[0].url" />
-
                         <v-spacer />
                         <span>{{ item.price * items[i].counter }} руб</span>
                         <v-btn icon @click="itemDelete(item, i)"
@@ -140,7 +139,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["isAuthenticated", "loggedInUser","isSpecialUser"]),
+    ...mapGetters(["isAuthenticated", "loggedInUser", "isSpecialUser"]),
   },
   data: () => ({
     login_dialog: false,
@@ -181,11 +180,11 @@ export default {
     },
   },
   async created() {
-    if(process.browser){
-    const items = JSON.parse(localStorage.getItem("items")) || [];
-    this.items = items;
-    console.log(this.items);
-  }
+    if (process.browser) {
+      const items = JSON.parse(localStorage.getItem("items")) || [];
+      this.items = items;
+      console.log(this.items);
+    }
   },
   methods: {
     basket() {
