@@ -72,15 +72,18 @@
                     <v-btn icon @click="() => counter++">
                       <v-icon>mdi-plus</v-icon> </v-btn
                     ><v-spacer />
-                    <h1>Цена:{{ item.price ? item.price * counter : 0 }}руб</h1>
-                    <div v-if="$store.getters['isSpecialUser']">
+
+                    <h2>Цена:{{ item.price ? item.price * counter : 0 }}руб
+
+                    <span v-if="$store.getters['isSpecialUser']">
                       <h4>
                         Для профессионалов:
                         {{
                           item.special_price ? item.special_price * counter : 0
                         }}руб
                       </h4>
-                    </div>
+                    </span>
+                    </h2>
                   </v-row>
                 </div>
               </v-layout>
